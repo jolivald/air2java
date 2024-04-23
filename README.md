@@ -37,8 +37,6 @@ Vous produirez à minima, pour l'écran d'accueil, l'affichage des groupes et la
 maquette "fil de fer" avec un outil de type balsamiq.
 L'accent sera mis sur l'utilisabilité. L'équipe préfère une app un peu moche si nécessaire, mais intuitive.
 vous réaliserez des tests sur les composants principaux des "pages" groupes et Connexion
-Afpa - CDA - ECF 2 et 3
-page 2 / 2
 
 
 ## CI/CD
