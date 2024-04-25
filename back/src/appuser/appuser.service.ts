@@ -1,9 +1,17 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Appuser } from './entities/appuser.entity';
 import { CreateAppuserDto } from './dto/create-appuser.dto';
 import { UpdateAppuserDto } from './dto/update-appuser.dto';
 
 @Injectable()
 export class AppuserService {
+  constructor(
+    @InjectRepository(Appuser)
+    private repository: Repository<Appuser>,
+  ) {}
+
   create(createAppuserDto: CreateAppuserDto) {
     return 'This action adds a new appuser';
   }
