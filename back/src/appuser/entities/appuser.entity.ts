@@ -6,7 +6,7 @@ export class Appuser {
   @PrimaryGeneratedColumn({ type: "int", name: "id_appuser" })
   idAppuser: number;
 
-  @Column("varchar", { name: "name_appuser", length: 150 })
+  @Column("varchar", { name: "name_appuser", length: 150, unique: true })
   nameAppuser: string;
 
   @Column("varchar", { name: "password_appuser", length: 250 })

@@ -18,6 +18,9 @@ import { SpecialtyModule } from './specialty/specialty.module';
 import { RegionModule } from './region/region.module';
 import { StateModule } from './state/state.module';
 import { TypeModule } from './type/type.module';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { AuthenticationService } from './authentication/authentication.service';
+import { AppuserService } from './appuser/appuser.service';
 
 @Module({
   imports: [
@@ -37,9 +40,10 @@ import { TypeModule } from './type/type.module';
     SpecialtyModule,
     RegionModule,
     StateModule,
-    TypeModule, 
+    TypeModule,
+    AuthenticationModule, 
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, AuthenticationService],
 })
 export class AppModule {}
