@@ -16,7 +16,10 @@ export class ResponsabilityPersonService {
     return `This action returns a #${id} responsabilityPerson`;
   }
 
-  update(id: number, updateResponsabilityPersonDto: UpdateResponsabilityPersonDto) {
+  update(
+    id: number,
+    updateResponsabilityPersonDto: UpdateResponsabilityPersonDto,
+  ) {
     return `This action updates a #${id} responsabilityPerson`;
   }
 

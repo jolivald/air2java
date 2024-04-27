@@ -5,11 +5,9 @@ import { AppuserController } from './appuser.controller';
 import { Appuser } from './entities/appuser.entity';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([Appuser])
-  ],
+  imports: [TypeOrmModule.forFeature([Appuser])],
   controllers: [AppuserController],
   providers: [AppuserService],
-  exports: [AppuserService]
+  exports: [AppuserService],
 })
 export class AppuserModule {}

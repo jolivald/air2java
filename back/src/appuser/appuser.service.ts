@@ -15,7 +15,7 @@ export class AppuserService {
   async create(userData: CreateAppuserDto) {
     const newUser = this.appuserRepository.create({
       nameAppuser: userData.name,
-      passwordAppuser: userData.password
+      passwordAppuser: userData.password,
     });
     await this.appuserRepository.save(newUser);
     return newUser;
@@ -31,7 +31,10 @@ export class AppuserService {
     if (user) {
       return user;
     }
-    throw new HttpException('User with this id does not exist', HttpStatus.NOT_FOUND);
+    throw new HttpException(
+      'User with this id does not exist',
+      HttpStatus.NOT_FOUND,
+    );
   }
 
   update(id: number, updateAppuserDto: UpdateAppuserDto) {
@@ -47,6 +50,9 @@ export class AppuserService {
     if (user) {
       return user;
     }
-    throw new HttpException('User with this name does not exist', HttpStatus.NOT_FOUND);
+    throw new HttpException(
+      'User with this name does not exist',
+      HttpStatus.NOT_FOUND,
+    );
   }
 }

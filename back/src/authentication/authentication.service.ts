@@ -5,16 +5,14 @@ import { RegisterAppuserDto } from './dto/register-appuser.dto';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(
-    private readonly appuserService: AppuserService
-  ) {}
+  constructor(private readonly appuserService: AppuserService) {}
 
   public async register(registrationData: RegisterAppuserDto) {
     const hashedPassword = await bcrypt.hash(registrationData.password, 10);
     try {
       const createdUser = await this.appuserService.create({
         ...registrationData,
-        password: hashedPassword
+        password: hashedPassword,
       });
       createdUser.passwordAppuser = undefined;
       return createdUser;
@@ -23,7 +21,10 @@ export class AuthenticationService {
       // if (error?.code === PostgresErrorCode.UniqueViolation) {
       //   throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
       // }
-      throw new HttpException('Something went wrong', HttpStatus.INTERNAL_SERVER_ERROR);
+      throw new HttpException(
+        'Something went wrong',
+        HttpStatus.INTERNAL_SERVER_ERROR,
+      );
     }
   }
 
@@ -34,17 +35,26 @@ export class AuthenticationService {
       user.passwordAppuser = undefined;
       return user;
     } catch (error) {
-      throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        'Wrong credentials provided',
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
-  private async verifyPassword(plainTextPassword: string, hashedPassword: string) {
+  private async verifyPassword(
+    plainTextPassword: string,
+    hashedPassword: string,
+  ) {
     const isPasswordMatching = await bcrypt.compare(
       plainTextPassword,
-      hashedPassword
+      hashedPassword,
     );
     if (!isPasswordMatching) {
-      throw new HttpException('Wrong credentials provided', HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        'Wrong credentials provided',
+        HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }

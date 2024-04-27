@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PerformanceService } from './performance.service';
 import { CreatePerformanceDto } from './dto/create-performance.dto';
 import { UpdatePerformanceDto } from './dto/update-performance.dto';
@@ -23,7 +31,10 @@ export class PerformanceController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePerformanceDto: UpdatePerformanceDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePerformanceDto: UpdatePerformanceDto,
+  ) {
     return this.performanceService.update(+id, updatePerformanceDto);
   }
 

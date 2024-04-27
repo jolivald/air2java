@@ -41,7 +41,7 @@ import { AppuserService } from './appuser/appuser.service';
     RegionModule,
     StateModule,
     TypeModule,
-    AuthenticationModule, 
+    AuthenticationModule,
   ],
   controllers: [AppController],
   providers: [AppService, AuthenticationService],
