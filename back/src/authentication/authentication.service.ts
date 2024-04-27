@@ -1,6 +1,6 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { AppuserService } from 'src/appuser/appuser.service';
-import bcrypt from 'bcrypt';
+import * as bcrypt from 'bcrypt';
 import { RegisterAppuserDto } from './dto/register-appuser.dto';
 
 @Injectable()

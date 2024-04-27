@@ -7,15 +7,10 @@ import { Appuser } from 'src/appuser/entities/appuser.entity';
 @Injectable()
 export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authenticationService: AuthenticationService) {
-    super({
-      usernameField: 'nameAppuser',
-      passwordField: 'passwordAppuser',
-    });
-    console.log('local stratedy', this);
+    super();
   }
 
-  async validate(name: string, password: string): Promise<Appuser> {
-    console.log('local validate', name);
-    return this.authenticationService.getAuthenticatedUser(name, password);
+  async validate(username: string, password: string): Promise<Appuser> {
+    return this.authenticationService.getAuthenticatedUser(username, password);
   }
 }
