@@ -25,11 +25,5 @@ export class AuthenticationController {
   @Post('login')
   async logIn(@Req() request: RequestWithUser) {
     return request.user;
-    const {
-      idAppuser: userid,
-      typeAppuser: usertype,
-      nameAppuser: username,
-    } = request.user;
-    return { userid, usertype, username };
   }
 }
