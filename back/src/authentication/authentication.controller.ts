@@ -24,6 +24,7 @@ export class AuthenticationController {
   @UseGuards(LocalAuthenticationGuard)
   @Post('login')
   async logIn(@Req() request: RequestWithUser) {
+    return request.user;
     const {
       idAppuser: userid,
       typeAppuser: usertype,

@@ -18,6 +18,9 @@ export class AuthenticationService {
       return createdUser;
     } catch (error) {
       // TODO: port following code to mysql?
+      // SQL Error (1062): Duplicate entry <-- RND
+      // @see https://mariadb.com/kb/en/mariadb-error-code-reference/
+      console.error('[ERROR] auth.register', error);
       // if (error?.code === PostgresErrorCode.UniqueViolation) {
       //   throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
       // }
