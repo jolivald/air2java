@@ -1,11 +1,19 @@
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
 import { AppuserService } from 'src/appuser/appuser.service';
 import * as bcrypt from 'bcrypt';
 import { RegisterAppuserDto } from './dto/register-appuser.dto';
+//import { TokenPayload } from './tokenPayload.interface';
+import { Appuser } from 'src/appuser/entities/appuser.entity';
 
 @Injectable()
 export class AuthenticationService {
-  constructor(private readonly appuserService: AppuserService) {}
+  constructor(
+    private readonly appuserService: AppuserService,
+    private readonly jwtService: JwtService,
+    private readonly configService: ConfigService,
+  ) {}
 
   public async register(registrationData: RegisterAppuserDto) {
     const hashedPassword = await bcrypt.hash(registrationData.password, 10);
@@ -58,5 +66,14 @@ export class AuthenticationService {
         HttpStatus.BAD_REQUEST,
       );
     }
+  }
+
+  public getAuthenticatedToken({
+    idAppuser: id,
+    typeAppuser: type,
+    nameAppuser: name,
+  }: Appuser): string {
+    return this.jwtService.sign({ id, type, name });
+    //return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get('JWT_TTL')}`;
   }
 }

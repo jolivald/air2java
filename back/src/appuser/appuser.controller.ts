@@ -7,11 +7,13 @@ import {
   Param,
   Delete,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { AppuserService } from './appuser.service';
 import { CreateAppuserDto } from './dto/create-appuser.dto';
 import { UpdateAppuserDto } from './dto/update-appuser.dto';
 import { PasswordInterceptor } from 'src/transform/password.interceptor';
+import JwtAuthenticationGuard from 'src/authentication/jwtAuthentication.guard';
 
 @Controller('appuser')
 @UseInterceptors(PasswordInterceptor)
@@ -29,6 +31,7 @@ export class AppuserController {
   }
 
   @Get(':id')
+  @UseGuards(JwtAuthenticationGuard)
   findOne(@Param('id') id: string) {
     return this.appuserService.findOne(+id);
   }

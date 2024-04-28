@@ -15,9 +15,10 @@ export class TransformInterceptor implements NestInterceptor {
   }
 
   private sanitizeResponseProperties(data) {
+    //console.log('transform', data);
     return Object.entries(data).reduce(
       (acc, [key, value]) =>
-        Object.assign(acc, { [key.slice(0, key.search(/[A-Z]/))]: value }),
+        Object.assign(acc, { [key.split(/[A-Z]/)[0]]: value }),
       {},
     );
   }
