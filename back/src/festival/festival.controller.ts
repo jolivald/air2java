@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { FestivalService } from './festival.service';
 import { CreateFestivalDto } from './dto/create-festival.dto';
 import { UpdateFestivalDto } from './dto/update-festival.dto';
@@ -23,7 +31,10 @@ export class FestivalController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateFestivalDto: UpdateFestivalDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateFestivalDto: UpdateFestivalDto,
+  ) {
     return this.festivalService.update(+id, updateFestivalDto);
   }
 

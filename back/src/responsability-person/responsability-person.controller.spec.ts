@@ -11,7 +11,9 @@ describe('ResponsabilityPersonController', () => {
       providers: [ResponsabilityPersonService],
     }).compile();
 
-    controller = module.get<ResponsabilityPersonController>(ResponsabilityPersonController);
+    controller = module.get<ResponsabilityPersonController>(
+      ResponsabilityPersonController,
+    );
   });
 
   it('should be defined', () => {
