@@ -5,13 +5,16 @@ import {
   HttpCode,
   Post,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthenticationService } from './authentication.service';
 import { RegisterAppuserDto } from './dto/register-appuser.dto';
 import { RequestWithUser } from './requestWithUser.interface';
 import { LocalAuthenticationGuard } from './localAuthentication.guard';
+import { PasswordInterceptor } from 'src/transform/password.interceptor';
 
 @Controller('authentication')
+@UseInterceptors(PasswordInterceptor)
 export class AuthenticationController {
   constructor(private readonly authenticationService: AuthenticationService) {}
 

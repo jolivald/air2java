@@ -15,18 +15,15 @@ export class AuthenticationService {
         name: registrationData.name,
         password: hashedPassword,
       });
-      createdUser.passwordAppuser = undefined;
       return createdUser;
     } catch (error) {
+      // TODO: move constant to mariadb error enum
       if (error?.errno === 1062) {
         throw new HttpException(
           'User with that name already exists',
           HttpStatus.BAD_REQUEST,
         );
       }
-      // if (error?.code === PostgresErrorCode.UniqueViolation) {
-      //   throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
-      // }
       throw new HttpException(
         'Something went wrong',
         HttpStatus.INTERNAL_SERVER_ERROR,
@@ -38,7 +35,6 @@ export class AuthenticationService {
     try {
       const user = await this.appuserService.getByName(name);
       await this.verifyPassword(plainTextPassword, user.passwordAppuser);
-      user.passwordAppuser = undefined;
       return user;
     } catch (error) {
       throw new HttpException(

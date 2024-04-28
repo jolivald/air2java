@@ -6,12 +6,15 @@ import {
   Patch,
   Param,
   Delete,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AppuserService } from './appuser.service';
 import { CreateAppuserDto } from './dto/create-appuser.dto';
 import { UpdateAppuserDto } from './dto/update-appuser.dto';
+import { PasswordInterceptor } from 'src/transform/password.interceptor';
 
 @Controller('appuser')
+@UseInterceptors(PasswordInterceptor)
 export class AppuserController {
   constructor(private readonly appuserService: AppuserService) {}
 
