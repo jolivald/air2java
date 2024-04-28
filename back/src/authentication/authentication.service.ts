@@ -11,16 +11,19 @@ export class AuthenticationService {
     const hashedPassword = await bcrypt.hash(registrationData.password, 10);
     try {
       const createdUser = await this.appuserService.create({
-        ...registrationData,
+        type: 'guest',
+        name: registrationData.name,
         password: hashedPassword,
       });
       createdUser.passwordAppuser = undefined;
       return createdUser;
     } catch (error) {
-      // TODO: port following code to mysql?
-      // SQL Error (1062): Duplicate entry <-- RND
-      // @see https://mariadb.com/kb/en/mariadb-error-code-reference/
-      console.error('[ERROR] auth.register', error);
+      if (error?.errno === 1062) {
+        throw new HttpException(
+          'User with that name already exists',
+          HttpStatus.BAD_REQUEST,
+        );
+      }
       // if (error?.code === PostgresErrorCode.UniqueViolation) {
       //   throw new HttpException('User with that email already exists', HttpStatus.BAD_REQUEST);
       // }

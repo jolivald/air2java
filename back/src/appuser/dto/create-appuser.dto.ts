@@ -7,5 +7,9 @@ export class CreateAppuserDto {
 
   @IsString()
   @IsNotEmpty()
+  type: string;
+
+  @IsString()
+  @IsNotEmpty()
   password: string;
 }

@@ -15,6 +15,7 @@ export class AppuserService {
   async create(userData: CreateAppuserDto) {
     const newUser = this.appuserRepository.create({
       nameAppuser: userData.name,
+      typeAppuser: userData.type,
       passwordAppuser: userData.password,
     });
     await this.appuserRepository.save(newUser);
@@ -37,6 +38,7 @@ export class AppuserService {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   update(id: number, updateAppuserDto: UpdateAppuserDto) {
     return `This action updates a #${id} appuser`;
   }
