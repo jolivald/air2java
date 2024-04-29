@@ -16,6 +16,7 @@ import { PasswordInterceptor } from 'src/transform/password.interceptor';
 import JwtAuthenticationGuard from 'src/authentication/jwtAuthentication.guard';
 
 @Controller('appuser')
+@UseGuards(JwtAuthenticationGuard)
 @UseInterceptors(PasswordInterceptor)
 export class AppuserController {
   constructor(private readonly appuserService: AppuserService) {}
@@ -31,7 +32,6 @@ export class AppuserController {
   }
 
   @Get(':id')
-  @UseGuards(JwtAuthenticationGuard)
   findOne(@Param('id') id: string) {
     return this.appuserService.findOne(+id);
   }

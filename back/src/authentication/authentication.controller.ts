@@ -39,7 +39,7 @@ export class AuthenticationController {
     @Res({ passthrough: true }) response: Response,
   ) {
     const token = this.authenticationService.getAuthenticatedToken(user);
-    response.cookie('Authentication', token, {
+    response.cookie('Authentication', `Bearer ${token}`, {
       httpOnly: true,
       path: '/',
       maxAge: this.configService.get('JWT_TTL'),
