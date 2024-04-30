@@ -19,12 +19,14 @@ import { Role } from 'src/authentication/role.enum';
 import { RolesGuard } from 'src/authentication/roles.guard';
 
 @Controller('appuser')
-@UseGuards(JwtAuthenticationGuard, RolesGuard)
 @UseInterceptors(PasswordInterceptor)
+@UseGuards(JwtAuthenticationGuard, RolesGuard)
+@Roles(Role.Admin, Role.User)
 export class AppuserController {
   constructor(private readonly appuserService: AppuserService) {}
 
   @Post()
+  @Roles(Role.Admin)
   create(@Body() createAppuserDto: CreateAppuserDto) {
     return this.appuserService.create(createAppuserDto);
   }
@@ -35,12 +37,12 @@ export class AppuserController {
   }
 
   @Get(':id')
-  @Roles(Role.Admin, Role.User)
   findOne(@Param('id') id: string) {
     return this.appuserService.findOne(+id);
   }
 
   @Patch(':id')
+  @Roles(Role.Admin)
   update(@Param('id') id: string, @Body() updateAppuserDto: UpdateAppuserDto) {
     return this.appuserService.update(+id, updateAppuserDto);
   }

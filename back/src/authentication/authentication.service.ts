@@ -6,6 +6,7 @@ import * as bcrypt from 'bcrypt';
 import { RegisterAppuserDto } from './dto/register-appuser.dto';
 //import { TokenPayload } from './tokenPayload.interface';
 import { Appuser } from 'src/appuser/entities/appuser.entity';
+import { Mariadb } from './mariadb.enum';
 
 @Injectable()
 export class AuthenticationService {
@@ -25,8 +26,7 @@ export class AuthenticationService {
       });
       return createdUser;
     } catch (error) {
-      // TODO: move constant to mariadb error enum
-      if (error?.errno === 1062) {
+      if (error?.errno === Mariadb.UniqueViolation) {
         throw new HttpException(
           'User with that name already exists',
           HttpStatus.BAD_REQUEST,
