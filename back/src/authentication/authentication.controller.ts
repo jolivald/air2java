@@ -21,7 +21,7 @@ import { RolesGuard } from './roles.guard';
 import { Roles } from './roles.decorator';
 import { Role } from './role.enum';
 
-@Controller('authentication')
+@Controller('auth')
 @UseInterceptors(PasswordInterceptor)
 export class AuthenticationController {
   constructor(

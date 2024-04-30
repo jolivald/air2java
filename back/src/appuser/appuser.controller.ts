@@ -18,7 +18,7 @@ import { Roles } from 'src/authentication/roles.decorator';
 import { Role } from 'src/authentication/role.enum';
 import { RolesGuard } from 'src/authentication/roles.guard';
 
-@Controller('appuser')
+@Controller('user')
 @UseInterceptors(PasswordInterceptor)
 @UseGuards(JwtAuthenticationGuard, RolesGuard)
 @Roles(Role.Admin, Role.User)
