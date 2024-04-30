@@ -1,0 +1,31 @@
+version: '3.5'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    container_name: a2j_database
+    env_file: ./.env
+    environment:
+      MARIADB_ROOT_PASSWORD: $DB_PASS
+      MARIADB_DATABASE: $DB_NAME
+    ports:
+      - $DB_PORT:$DB_PORT
+    volumes:
+      - ./air2java_export.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: a2j_backend
+    env_file: ./.env
+    environment:
+      - PORT=$APP_PORT
+    ports:
+      - $APP_PORT:$APP_PORT
+      - 9229:9229
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
