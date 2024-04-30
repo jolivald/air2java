@@ -16,6 +16,7 @@ import { LocalAuthenticationGuard } from './localAuthentication.guard';
 import { PasswordInterceptor } from 'src/transform/password.interceptor';
 import { Response } from 'express';
 import { AppuserService } from 'src/appuser/appuser.service';
+import JwtAuthenticationGuard from './jwtAuthentication.guard';
 
 @Controller('authentication')
 @UseInterceptors(PasswordInterceptor)
@@ -45,5 +46,20 @@ export class AuthenticationController {
       maxAge: this.configService.get('JWT_TTL'),
     });
     return user;
+  }
+
+  
+  @UseGuards(JwtAuthenticationGuard)
+  @Post('logout')
+  async logOut(
+    @Req() request: RequestWithUser,
+    @Res() response: Response,
+  ) {
+    response.cookie('Authentication', '', {
+      httpOnly: true,
+      path: '/',
+      maxAge: 0
+    });
+    return response.sendStatus(200);
   }
 }
