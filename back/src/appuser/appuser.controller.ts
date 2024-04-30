@@ -48,6 +48,7 @@ export class AppuserController {
   }
 
   @Delete(':id')
+  @Roles(Role.Admin)
   remove(@Param('id') id: string) {
     return this.appuserService.remove(+id);
   }
