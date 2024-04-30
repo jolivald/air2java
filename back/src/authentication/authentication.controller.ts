@@ -15,26 +15,31 @@ import { RequestWithUser } from './requestWithUser.interface';
 import { LocalAuthenticationGuard } from './localAuthentication.guard';
 import { PasswordInterceptor } from 'src/transform/password.interceptor';
 import { Response } from 'express';
-import { AppuserService } from 'src/appuser/appuser.service';
+//import { AppuserService } from 'src/appuser/appuser.service';
 import JwtAuthenticationGuard from './jwtAuthentication.guard';
+import { RolesGuard } from './roles.guard';
+import { Roles } from './roles.decorator';
+import { Role } from './role.enum';
 
 @Controller('authentication')
 @UseInterceptors(PasswordInterceptor)
 export class AuthenticationController {
   constructor(
     private readonly authenticationService: AuthenticationService,
-    private readonly appuserService: AppuserService,
     private readonly configService: ConfigService,
+    //private readonly appuserService: AppuserService,
   ) {}
 
   @Post('register')
+  @Roles(Role.Admin)
+  @UseGuards(JwtAuthenticationGuard, RolesGuard)
   async register(@Body() registrationData: RegisterAppuserDto) {
     return this.authenticationService.register(registrationData);
   }
 
+  @Post('login')
   @HttpCode(200)
   @UseGuards(LocalAuthenticationGuard)
-  @Post('login')
   async logIn(
     @Req() { user }: RequestWithUser,
     @Res({ passthrough: true }) response: Response,

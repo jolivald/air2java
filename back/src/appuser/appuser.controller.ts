@@ -14,9 +14,12 @@ import { CreateAppuserDto } from './dto/create-appuser.dto';
 import { UpdateAppuserDto } from './dto/update-appuser.dto';
 import { PasswordInterceptor } from 'src/transform/password.interceptor';
 import JwtAuthenticationGuard from 'src/authentication/jwtAuthentication.guard';
+import { Roles } from 'src/authentication/roles.decorator';
+import { Role } from 'src/authentication/role.enum';
+import { RolesGuard } from 'src/authentication/roles.guard';
 
 @Controller('appuser')
-@UseGuards(JwtAuthenticationGuard)
+@UseGuards(JwtAuthenticationGuard, RolesGuard)
 @UseInterceptors(PasswordInterceptor)
 export class AppuserController {
   constructor(private readonly appuserService: AppuserService) {}
@@ -32,6 +35,7 @@ export class AppuserController {
   }
 
   @Get(':id')
+  @Roles(Role.Admin, Role.User)
   findOne(@Param('id') id: string) {
     return this.appuserService.findOne(+id);
   }
