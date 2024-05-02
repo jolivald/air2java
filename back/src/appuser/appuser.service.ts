@@ -23,7 +23,8 @@ export class AppuserService {
   }
 
   findAll() {
-    return `This action returns all appuser`;
+    return this.appuserRepository.find();
+    //return `This action returns all appuser`;
   }
 
   // TODO: add guard
