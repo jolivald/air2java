@@ -22,13 +22,13 @@ async function bootstrap() {
   app.use(cookieParser());
   app.enableCors({
     // TODO: set strict cors origin policy
-    origin: 'http://localhost:5173',
+    origin: 'https://localhost:5173',
     credentials: true,
-    //methods: 'GET, PUT, POST, DELETE', 
+    //methods: 'GET, PUT, POST, DELETE',
     //allowedHeaders: 'Content-Type, Authorization',
   });
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(port);
-  console.log(`-> Air2Java backend listening on: http://${host}:${port}`);
+  console.log(`-> Air2Java backend listening on: https://${host}:${port}`);
 }
 bootstrap();
