@@ -48,7 +48,8 @@ export class AuthenticationController {
     response.cookie('Authentication', token, {
       httpOnly: true,
       path: '/',
-      maxAge: this.configService.get('JWT_TTL'),
+      //maxAge: this.configService.get('JWT_TTL'),
+      sameSite: 'none'
     });
     return user;
   }
