@@ -13,4 +13,4 @@ const fetchJson = (url: string, options: fetchUtils.Options = {}) => {
   return fetchUtils.fetchJson(url, options);
 }
 
-export default crudProvider('http://localhost:3000/', fetchJson);
+export default crudProvider('https://localhost:3000/', fetchJson);

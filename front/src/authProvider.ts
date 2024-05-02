@@ -4,7 +4,7 @@ const authProvider = {
   login: ({ username, password }) => {
     const request = new Request(
       // TODO: move host & port to .env file
-      'http://localhost:3000/auth/login',
+      'https://localhost:3000/auth/login',
       {
         method: 'POST',
         body: JSON.stringify({ name: username, password }),
