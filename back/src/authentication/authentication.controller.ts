@@ -48,7 +48,7 @@ export class AuthenticationController {
     response.cookie('Authentication', token, {
       httpOnly: true,
       path: '/',
-      domain: 'https://localhost',
+      domain: '127.0.0.1',
       maxAge: this.configService.get('JWT_TTL'),
       sameSite: 'none',
       secure: true,

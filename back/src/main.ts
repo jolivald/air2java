@@ -22,10 +22,10 @@ async function bootstrap() {
   app.use(cookieParser());
   app.enableCors({
     // TODO: set strict cors origin policy
-    origin: 'https://localhost:5173',
+    origin: 'https://127.0.0.1:5173',
     credentials: true,
     //methods: 'GET, PUT, POST, DELETE',
-    //allowedHeaders: 'Content-Type, Authorization',
+    allowedHeaders: ['Content-Type', 'Authorization', 'credentials', 'Cookie'],
   });
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(port);

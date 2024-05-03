@@ -4,11 +4,18 @@ const authProvider = {
   login: ({ username, password }) => {
     const request = new Request(
       // TODO: move host & port to .env file
-      'https://localhost:3000/auth/login',
+      'https://127.0.0.1:3000/auth/login',
       {
         method: 'POST',
         body: JSON.stringify({ name: username, password }),
-        headers: new Headers({ 'Content-Type': 'application/json', credentials: 'include' }),
+        credentials: 'include',
+        headers: new Headers({
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          //'Cookie': 'Authentication=',
+          //'Sec-Fetch-Site': 'cross-site',
+          
+        }),
       }
     );
     return fetch(request)
