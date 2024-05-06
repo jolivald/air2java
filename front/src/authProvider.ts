@@ -12,8 +12,8 @@ const authProvider = {
         headers: new Headers({
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          //'Cookie': 'Authentication=',
-          //'Sec-Fetch-Site': 'cross-site',
+          'Access-Control-Request-Method': 'GET, HEAD, POST, PUT, PATCH, DELETE, OPTIONS',
+          'Access-Control-Request-Headers': 'Accept, Content-Type, Authentication, Cookie, credentials',
           
         }),
       }

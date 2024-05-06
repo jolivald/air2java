@@ -24,8 +24,8 @@ async function bootstrap() {
     // TODO: set strict cors origin policy
     origin: 'https://127.0.0.1:5173',
     credentials: true,
-    //methods: 'GET, PUT, POST, DELETE',
-    allowedHeaders: ['Content-Type', 'Authorization', 'credentials', 'Cookie'],
+    allowedHeaders: 'Content-Type, Authorization, credentials, Cookie, range',
+    methods: 'GET, PUT, PATCH, POST, DELETE, HEAD, OPTIONS'
   });
   app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(port);
