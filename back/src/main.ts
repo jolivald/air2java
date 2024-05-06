@@ -21,7 +21,6 @@ async function bootstrap() {
   app.disable('x-powered-by');
   app.use(cookieParser());
   app.enableCors({
-    // TODO: set strict cors origin policy
     origin: 'https://127.0.0.1:5173',
     credentials: true,
     allowedHeaders: 'Content-Type, Authorization, credentials, Cookie, range',

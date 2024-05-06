@@ -1,3 +1,31 @@
+import { Controller } from "@nestjs/common";
+import { Crud, CrudController } from "@dataui/crud";
+import { Appuser } from "./entities/appuser.entity";
+import { AppuserService } from "./appuser.service";
+
+@Crud({
+  model: {
+    type: Appuser,
+  },
+  params: {
+    id: {
+      field: 'idAppuser',
+      type: 'number',
+      primary: true,
+    },
+  },
+  query: {
+    sort: [{ field: 'idAppuser', order: 'ASC' }],
+  }
+})
+@Controller('user')
+export class AppuserController implements CrudController<Appuser> {
+  constructor(public service: AppuserService) {}
+}
+
+// ---8<--- 
+
+/*
 import {
   Controller,
   Get,
@@ -53,3 +81,4 @@ export class AppuserController {
     return this.appuserService.remove(+id);
   }
 }
+*/

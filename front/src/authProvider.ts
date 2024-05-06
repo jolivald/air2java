@@ -27,16 +27,16 @@ const authProvider = {
       })
       .then((auth) => {
         console.log('AUTH ok', auth);
-        /*localStorage.setItem(
+        localStorage.setItem(
           'auth',
-          JSON.stringify({ ...auth, fullName: username })
-        );*/
+          JSON.stringify({ ...auth })
+        );
       })
       .catch(() => {
         throw new Error('Network error');
       });
   },
-  checkError: (error) => {
+  checkError: (error: { status: any; }) => {
     const status = error.status;
     if (status === 401 || status === 403) {
       localStorage.removeItem('auth');
@@ -55,13 +55,16 @@ const authProvider = {
   },
   getIdentity: () => {
     try {
-      const { id, fullName, avatar } = JSON.parse(localStorage.getItem('auth'));
-      return Promise.resolve({ id, fullName, avatar });
+      const auth = JSON.parse(localStorage.getItem('auth') || '');
+      return Promise.resolve(auth);
     } catch (error) {
       return Promise.reject(error);
     }
   },
-  getPermissions: (params) => Promise.resolve(),
+  getPermissions: (params: any) => {
+    console.log('get perms', params);
+    return Promise.resolve();
+  },
 };
 
 export default authProvider;
