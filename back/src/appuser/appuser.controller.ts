@@ -9,13 +9,15 @@ import { AppuserService } from "./appuser.service";
   },
   params: {
     id: {
-      field: 'idAppuser',
+      field: 'id',
       type: 'number',
       primary: true,
     },
   },
   query: {
-    sort: [{ field: 'idAppuser', order: 'ASC' }],
+    sort: [
+      { field: 'id', order: 'ASC' }
+    ],
   }
 })
 @Controller('user')
@@ -30,7 +32,7 @@ import {
   Controller,
   Get,
   Post,
-  Body,
+  Body, 
   Patch,
   Param,
   Delete,

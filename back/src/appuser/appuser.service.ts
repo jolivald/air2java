@@ -17,17 +17,17 @@ export class AppuserService extends TypeOrmCrudService<Appuser> {
 
   
   async create(userData: CreateAppuserDto) {
-    const newUser = this.appuserRepository.create({
+    const newUser = this.appuserRepository.create(userData, /*{
       nameAppuser: userData.name,
       typeAppuser: userData.type,
       passwordAppuser: userData.password,
-    });
+    }*/);
     await this.appuserRepository.save(newUser);
     return newUser;
   }
 
   async getByName(name: string) {
-    const user = await this.appuserRepository.findOneBy({ nameAppuser: name });
+    const user = await this.appuserRepository.findOneBy({ /*nameAppuser: */name });
     if (user) {
       return user;
     }

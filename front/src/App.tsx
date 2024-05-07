@@ -5,7 +5,6 @@ import {
   EditGuesser,
   ShowGuesser,
 } from "react-admin";
-//import crudProvider from 'ra-data-nestjsx-crud';
 import dataProvider from "./dataProvider";
 import authProvider from "./authProvider";
 

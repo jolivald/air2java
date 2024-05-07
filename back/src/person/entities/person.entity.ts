@@ -74,7 +74,7 @@ export class Person {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_appuser', referencedColumnName: 'idAppuser' }])
+  @JoinColumn([{ name: 'id_appuser', referencedColumnName: 'id' }])
   idAppuser2: Appuser;
 
   @ManyToOne(
