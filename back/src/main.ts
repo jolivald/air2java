@@ -26,7 +26,7 @@ async function bootstrap() {
     allowedHeaders: 'Content-Type, Authorization, credentials, Cookie, range',
     methods: 'GET, PUT, PATCH, POST, DELETE, HEAD, OPTIONS'
   });
-  app.useGlobalInterceptors(new TransformInterceptor());
+  // app.useGlobalInterceptors(new TransformInterceptor());
   await app.listen(port);
   console.log(`-> Air2Java backend listening on: https://${host}:${port}`);
 }

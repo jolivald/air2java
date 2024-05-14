@@ -26,7 +26,7 @@ export class Town {
   @Column('varchar', { name: 'name_town', length: 150 })
   nameTown: string;
 
-  @OneToMany(() => Festival, (festival) => festival.idTown2)
+  @OneToMany(() => Festival, (festival) => festival.town)
   festivals: Festival[];
 
   @OneToMany(() => Person, (person) => person.idTown2)

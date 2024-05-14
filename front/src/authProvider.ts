@@ -27,9 +27,10 @@ const authProvider = {
       })
       .then((auth) => {
         console.log('AUTH ok', auth);
+        const { id, type, name } = auth;
         localStorage.setItem(
           'auth',
-          JSON.stringify({ ...auth })
+          JSON.stringify({ id, type, name })
         );
       })
       .catch(() => {
@@ -62,7 +63,7 @@ const authProvider = {
     }
   },
   getPermissions: (params: any) => {
-    console.log('get perms', params);
+    console.log('get perms', JSON.stringify(params));
     return Promise.resolve();
   },
 };

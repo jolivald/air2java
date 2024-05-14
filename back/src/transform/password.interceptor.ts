@@ -13,12 +13,13 @@ export class PasswordInterceptor implements NestInterceptor {
     return next.handle().pipe(map(this.removePasswordProperty.bind(this)));
   }
 
-  private removePasswordProperty(data) {
+  private removePasswordProperty(response) {
+    const data = response.data || response;
     if (Array.isArray(data)){
       data.map(this.removePasswordProperty);
     } else {
-      delete data.passwordAppuser;
+      delete data.password;
     }
-    return data;
+    return response;
   }
 }

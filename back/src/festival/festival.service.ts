@@ -1,10 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFestivalDto } from './dto/create-festival.dto';
-import { UpdateFestivalDto } from './dto/update-festival.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Festival } from './entities/festival.entity';
+// import { CreateFestivalDto } from './dto/create-festival.dto';
+// import { UpdateFestivalDto } from './dto/update-festival.dto';
 
 @Injectable()
-export class FestivalService {
-  create(createFestivalDto: CreateFestivalDto) {
+export class FestivalService extends TypeOrmCrudService<Festival>  {
+  constructor(
+    @InjectRepository(Festival)
+    private festivalRepository: Repository<Festival>,
+  ) {
+    super(festivalRepository);
+  }
+  /*create(createFestivalDto: CreateFestivalDto) {
     return 'This action adds a new festival';
   }
 
@@ -22,5 +32,5 @@ export class FestivalService {
 
   remove(id: number) {
     return `This action removes a #${id} festival`;
-  }
+  }*/
 }

@@ -1,5 +1,5 @@
 import crudProvider from 'ra-data-nestjsx-crud';
-import simpleRest from 'ra-data-simple-rest';
+//import simpleRest from 'ra-data-simple-rest';
 
 import { fetchUtils } from 'react-admin';
 

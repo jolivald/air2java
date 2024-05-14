@@ -1,26 +1,16 @@
-import { Controller } from "@nestjs/common";
+import { Controller, UseInterceptors } from "@nestjs/common";
 import { Crud, CrudController } from "@dataui/crud";
 import { Appuser } from "./entities/appuser.entity";
 import { AppuserService } from "./appuser.service";
+import { PasswordInterceptor } from 'src/transform/password.interceptor';
 
 @Crud({
   model: {
     type: Appuser,
   },
-  params: {
-    id: {
-      field: 'id',
-      type: 'number',
-      primary: true,
-    },
-  },
-  query: {
-    sort: [
-      { field: 'id', order: 'ASC' }
-    ],
-  }
 })
 @Controller('user')
+@UseInterceptors(PasswordInterceptor)
 export class AppuserController implements CrudController<Appuser> {
   constructor(public service: AppuserService) {}
 }

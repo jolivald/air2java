@@ -16,19 +16,19 @@ import { Performance } from 'src/performance/entities/performance.entity';
 @Entity('festival', { schema: 'air2java' })
 export class Festival {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_fest' })
-  idFest: number;
+  id: number;
 
   @Column('varchar', { name: 'name_fest', length: 150 })
-  nameFest: string;
+  name: string;
 
   @Column('varchar', { name: 'location_fest', length: 250 })
-  locationFest: string;
+  location: string;
 
   @Column('date', { name: 'start_date_fest' })
-  startDateFest: string;
+  startDate: string;
 
   @Column('date', { name: 'end_date_fest' })
-  endDateFest: string;
+  endDate: string;
 
   @Column('int', { name: 'id_person' })
   idPerson: number;
@@ -41,14 +41,14 @@ export class Festival {
     onUpdate: 'RESTRICT',
   })
   @JoinColumn([{ name: 'id_person', referencedColumnName: 'idPerson' }])
-  idPerson2: Person;
+  person: Person;
 
   @ManyToOne(() => Town, (town) => town.festivals, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
   @JoinColumn([{ name: 'id_town', referencedColumnName: 'idTown' }])
-  idTown2: Town;
+  town: Town;
 
   @OneToMany(() => Performance, (performance) => performance.idFest2)
   performances: Performance[];

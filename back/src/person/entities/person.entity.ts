@@ -64,7 +64,7 @@ export class Person {
   @OneToMany(() => Band, (band) => band.idPerson2)
   bands: Band[];
 
-  @OneToMany(() => Festival, (festival) => festival.idPerson2)
+  @OneToMany(() => Festival, (festival) => festival.person)
   festivals: Festival[];
 
   @OneToMany(() => Musician, (musician) => musician.idPerson2)
