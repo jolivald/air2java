@@ -8,7 +8,7 @@ export const PersonEdit = () => (
       <TextInput source="lastname" />
       <TextInput source="civilStatus" />
       <TextInput source="address_1" />
-      <DateInput source="address_2" />
+      <TextInput source="address_2" />
       <TextInput source="phone" />
       <TextInput source="email" />
       <DateInput source="birthdate" />

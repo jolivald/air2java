@@ -8,7 +8,7 @@ export const PersonList = () => (
       <TextField source="lastname" />
       <TextField source="civilStatus" />
       <TextField source="address_1" />
-      <DateField source="address_2" />
+      <TextField source="address_2" />
       <TextField source="phone" />
       <EmailField source="email" />
       <DateField source="birthdate" />
