@@ -2,7 +2,8 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { TransformInterceptor } from './transform/transform.interceptor';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+// import { TransformInterceptor } from './transform/transform.interceptor';
 import * as cookieParser from 'cookie-parser';
 import * as fs from 'fs';
 
@@ -27,6 +28,16 @@ async function bootstrap() {
     methods: 'GET, PUT, PATCH, POST, DELETE, HEAD, OPTIONS'
   });
   // app.useGlobalInterceptors(new TransformInterceptor());
+
+  const config = new DocumentBuilder()
+    .setTitle('Cats example')
+    .setDescription('The cats API description')
+    .setVersion('1.0')
+    .addTag('cats')
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
+
   await app.listen(port);
   console.log(`-> Air2Java backend listening on: https://${host}:${port}`);
 }
