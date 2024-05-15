@@ -1,7 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { CreateBandDto } from './dto/create-band.dto';
-import { UpdateBandDto } from './dto/update-band.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Band } from './entities/band.entity';
+// import { UpdateBandDto } from './dto/update-band.dto';
+// import { Band } from './entities/band.entity';
 
+@Injectable()
+export class BandService extends TypeOrmCrudService<Band>  {
+  constructor(
+    @InjectRepository(Band)
+    private bandRepository: Repository<Band>,
+  ) {
+    super(bandRepository);
+  }
+}
+/*
 @Injectable()
 export class BandService {
   create(createBandDto: CreateBandDto) {
@@ -24,3 +39,4 @@ export class BandService {
     return `This action removes a #${id} band`;
   }
 }
+*/

@@ -12,6 +12,7 @@ import dataProvider from "./dataProvider";
 import authProvider from "./authProvider";
 import HandymanIcon from '@mui/icons-material/Handyman';
 import FestivalIcon from '@mui/icons-material/Festival';
+import GroupIcon from '@mui/icons-material/Group';
 //import UserIcon from '@mui/icons-material/People';
 
 export const App = () => (
@@ -25,6 +26,12 @@ export const App = () => (
     <Resource
       name="festival"
       icon={FestivalIcon}
+      list={ListGuesser}
+      edit={EditGuesser}
+    />
+    <Resource
+      name="band"
+      icon={GroupIcon}
       list={ListGuesser}
       edit={EditGuesser}
     />

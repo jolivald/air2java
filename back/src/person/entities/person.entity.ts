@@ -61,7 +61,7 @@ export class Person {
   @Column('int', { name: 'id_town' })
   idTown: number;
 
-  @OneToMany(() => Band, (band) => band.idPerson2)
+  @OneToMany(() => Band, (band) => band.id)
   bands: Band[];
 
   @OneToMany(() => Festival, (festival) => festival.person)
@@ -94,8 +94,8 @@ export class Person {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_band', referencedColumnName: 'idBand' }])
-  idBand2: Band;
+  @JoinColumn([{ name: 'id_band', referencedColumnName: 'id' }])
+  band: Band;
 
   @ManyToOne(() => Town, (town) => town.people, {
     onDelete: 'RESTRICT',
