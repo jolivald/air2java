@@ -8,6 +8,8 @@ import {
   List,
   TextField
 } from "react-admin";
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+import fr from 'ra-language-french';
 import dataProvider from "./dataProvider";
 import authProvider from "./authProvider";
 import HandymanIcon from '@mui/icons-material/Handyman';
@@ -15,6 +17,7 @@ import FestivalIcon from '@mui/icons-material/Festival';
 import GroupIcon from '@mui/icons-material/Group';
 import PersonIcon from '@mui/icons-material/Person';
 import WorkIcon from '@mui/icons-material/Work';
+
 
 import { UserList } from "./components/UserList";
 import { FestivalList } from "./components/FestivalList";
@@ -27,8 +30,14 @@ import { PersonEdit } from "./components/PersonEdit";
 import { ResponsabilityList } from "./components/ResponsabilityList";
 import { ResponsabilityEdit } from "./components/ResponsabilityEdit";
 
+export const i18nProvider = polyglotI18nProvider(() => fr, 'fr'); 
+
 export const App = () => (
-  <Admin dataProvider={dataProvider} authProvider={authProvider}>
+  <Admin
+    i18nProvider={i18nProvider}
+    authProvider={authProvider}
+    dataProvider={dataProvider}
+  >
     <Resource
       name="user"
       icon={HandymanIcon}
