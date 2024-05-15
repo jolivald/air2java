@@ -40,7 +40,7 @@ export class Festival {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_person', referencedColumnName: 'idPerson' }])
+  @JoinColumn([{ name: 'id_person', referencedColumnName: 'id' }])
   person: Person;
 
   @ManyToOne(() => Town, (town) => town.festivals, {

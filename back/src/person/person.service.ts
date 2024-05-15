@@ -1,9 +1,20 @@
 import { Injectable } from '@nestjs/common';
-import { CreatePersonDto } from './dto/create-person.dto';
-import { UpdatePersonDto } from './dto/update-person.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { Person } from './entities/person.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+// import { CreatePersonDto } from './dto/create-person.dto';
+// import { UpdatePersonDto } from './dto/update-person.dto';
 
 @Injectable()
-export class PersonService {
+export class PersonService extends TypeOrmCrudService<Person> {
+    constructor(
+      @InjectRepository(Person)
+      private appuserRepository: Repository<Person>,
+    ) {
+      super(appuserRepository);
+    }
+  /*
   create(createPersonDto: CreatePersonDto) {
     return 'This action adds a new person';
   }
@@ -23,4 +34,5 @@ export class PersonService {
   remove(id: number) {
     return `This action removes a #${id} person`;
   }
+  */
 }

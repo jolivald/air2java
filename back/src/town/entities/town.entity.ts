@@ -29,7 +29,7 @@ export class Town {
   @OneToMany(() => Festival, (festival) => festival.town)
   festivals: Festival[];
 
-  @OneToMany(() => Person, (person) => person.idTown2)
+  @OneToMany(() => Person, (person) => person.id)
   people: Person[];
 
   @ManyToOne(() => Region, (region) => region.towns, {

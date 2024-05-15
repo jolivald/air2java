@@ -15,6 +15,6 @@ export class Appuser {
   @Column('varchar', { name: 'type_appuser', length: 150 })
   type: string;
 
-  @OneToOne(() => Person, (person) => person.idAppuser2)
+  @OneToOne(() => Person, (person) => person.id)
   person: Person;
 }

@@ -29,7 +29,7 @@ export class Band {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_person', referencedColumnName: 'idPerson' }])
+  @JoinColumn([{ name: 'id_person', referencedColumnName: 'id' }])
   person: Person;
 
   @OneToMany(() => Performance, (performance) => performance.band)
