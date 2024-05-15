@@ -13,37 +13,42 @@ import authProvider from "./authProvider";
 import HandymanIcon from '@mui/icons-material/Handyman';
 import FestivalIcon from '@mui/icons-material/Festival';
 import GroupIcon from '@mui/icons-material/Group';
+import PersonIcon from '@mui/icons-material/Person';
 //import UserIcon from '@mui/icons-material/People';
+import { UserList } from "./components/UserList";
+import { FestivalList } from "./components/FestivalList";
+import { BandList } from "./components/BandList";
+import { PersonList } from "./components/PersonList";
+import { UserEdit } from "./components/UserEdit";
+import { FestivalEdit } from "./components/FestivalEdit";
+import { BandEdit } from "./components/BandEdit";
+import { PersonEdit } from "./components/PersonEdit";
 
 export const App = () => (
   <Admin dataProvider={dataProvider} authProvider={authProvider}>
     <Resource
       name="user"
       icon={HandymanIcon}
-      list={ListGuesser}
-      edit={EditGuesser}
+      list={UserList}
+      edit={UserEdit}
     />
     <Resource
       name="festival"
       icon={FestivalIcon}
-      list={ListGuesser}
-      edit={EditGuesser}
+      list={FestivalList}
+      edit={FestivalEdit}
     />
     <Resource
       name="band"
       icon={GroupIcon}
-      list={ListGuesser}
-      edit={EditGuesser}
+      list={BandList}
+      edit={BandEdit}
+    />
+    <Resource
+      name="person"
+      icon={PersonIcon}
+      list={PersonList}
+      edit={PersonEdit}
     />
   </Admin>
 );
-
-/*
-    <List>
-        <Datagrid rowClick="edit">
-            <TextField source="id" />
-            <TextField source="name" />
-            <TextField source="type" />
-        </Datagrid>
-    </List>
-*/
