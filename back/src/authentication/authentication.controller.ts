@@ -48,22 +48,21 @@ export class AuthenticationController {
     response.cookie('Authentication', token, {
       httpOnly: true,
       path: '/',
+      domain: '127.0.0.1',
       maxAge: this.configService.get('JWT_TTL'),
+      sameSite: 'none',
+      secure: true,
     });
     return user;
   }
 
-  
   @UseGuards(JwtAuthenticationGuard)
   @Post('logout')
-  async logOut(
-    @Req() request: RequestWithUser,
-    @Res() response: Response,
-  ) {
+  async logOut(@Req() request: RequestWithUser, @Res() response: Response) {
     response.cookie('Authentication', '', {
       httpOnly: true,
       path: '/',
-      maxAge: 0
+      maxAge: 0,
     });
     return response.sendStatus(200);
   }

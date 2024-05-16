@@ -8,9 +8,22 @@ import {
   Delete,
 } from '@nestjs/common';
 import { BandService } from './band.service';
-import { CreateBandDto } from './dto/create-band.dto';
-import { UpdateBandDto } from './dto/update-band.dto';
+// import { CreateBandDto } from './dto/create-band.dto';
+// import { UpdateBandDto } from './dto/update-band.dto';
+import { Band } from './entities/band.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: Band,
+  },
+})
+@Controller('band')
+export class BandController implements CrudController<Band> {
+  constructor(public service: BandService) {}
+}
+
+/*
 @Controller('band')
 export class BandController {
   constructor(private readonly bandService: BandService) {}
@@ -40,3 +53,4 @@ export class BandController {
     return this.bandService.remove(+id);
   }
 }
+*/

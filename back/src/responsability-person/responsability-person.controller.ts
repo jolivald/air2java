@@ -8,9 +8,22 @@ import {
   Delete,
 } from '@nestjs/common';
 import { ResponsabilityPersonService } from './responsability-person.service';
-import { CreateResponsabilityPersonDto } from './dto/create-responsability-person.dto';
-import { UpdateResponsabilityPersonDto } from './dto/update-responsability-person.dto';
+// import { CreateResponsabilityPersonDto } from './dto/create-responsability-person.dto';
+// import { UpdateResponsabilityPersonDto } from './dto/update-responsability-person.dto';
+import { ResponsabilityPerson } from './entities/responsability-person.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: ResponsabilityPerson,
+  },
+})
+@Controller('responsability')
+export class ResponsabilityPersonController implements CrudController<ResponsabilityPerson> {
+  constructor(public service: ResponsabilityPersonService) {}
+}
+
+/*
 @Controller('responsability-person')
 export class ResponsabilityPersonController {
   constructor(
@@ -50,3 +63,4 @@ export class ResponsabilityPersonController {
     return this.responsabilityPersonService.remove(+id);
   }
 }
+*/

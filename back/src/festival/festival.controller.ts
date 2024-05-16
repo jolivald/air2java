@@ -1,3 +1,31 @@
+import { Controller, UseInterceptors } from "@nestjs/common";
+import { Crud, CrudController } from "@dataui/crud";
+import { Festival } from "./entities/festival.entity";
+import { FestivalService } from "./festival.service";
+
+@Crud({
+  model: {
+    type: Festival,
+  },
+  query: {
+    join: {
+      person: {
+        eager: true,
+      },
+      town: {
+        eager: true,
+      },
+    },
+  },
+})
+@Controller('festival')
+export class FestivalController implements CrudController<Festival> {
+  constructor(public service: FestivalService) {}
+}
+
+// ---8<--- 
+
+/*
 import {
   Controller,
   Get,
@@ -43,3 +71,4 @@ export class FestivalController {
     return this.festivalService.remove(+id);
   }
 }
+*/

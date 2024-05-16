@@ -17,10 +17,10 @@ import { Track } from 'src/track/entities/track.entity';
 @Entity('band', { schema: 'air2java' })
 export class Band {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_band' })
-  idBand: number;
+  id: number;
 
   @Column('varchar', { name: 'name_band', length: 150 })
-  nameBand: string;
+  name: string;
 
   @Column('int', { name: 'id_person' })
   idPerson: number;
@@ -29,19 +29,19 @@ export class Band {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_person', referencedColumnName: 'idPerson' }])
-  idPerson2: Person;
+  @JoinColumn([{ name: 'id_person', referencedColumnName: 'id' }])
+  person: Person;
 
-  @OneToMany(() => Performance, (performance) => performance.idBand2)
+  @OneToMany(() => Performance, (performance) => performance.band)
   performances: Performance[];
 
-  @OneToMany(() => Person, (person) => person.idBand2)
+  @OneToMany(() => Person, (person) => person.band)
   people: Person[];
 
   @ManyToMany(() => Track, (track) => track.bands)
   @JoinTable({
     name: 'repertory',
-    joinColumns: [{ name: 'id_band', referencedColumnName: 'idBand' }],
+    joinColumns: [{ name: 'id_band', referencedColumnName: 'id' }],
     inverseJoinColumns: [{ name: 'id_track', referencedColumnName: 'idTrack' }],
     schema: 'air2java',
   })

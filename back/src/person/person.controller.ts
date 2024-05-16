@@ -7,10 +7,23 @@ import {
   Param,
   Delete,
 } from '@nestjs/common';
+import { Crud, CrudController } from '@dataui/crud';
+import { Person } from './entities/person.entity';
 import { PersonService } from './person.service';
-import { CreatePersonDto } from './dto/create-person.dto';
-import { UpdatePersonDto } from './dto/update-person.dto';
+// import { CreatePersonDto } from './dto/create-person.dto';
+// import { UpdatePersonDto } from './dto/update-person.dto';
 
+@Crud({
+  model: {
+    type: Person,
+  },
+})
+@Controller('person')
+export class PersonController implements CrudController<Person> {
+  constructor(public service: PersonService) {}
+}
+
+/*
 @Controller('person')
 export class PersonController {
   constructor(private readonly personService: PersonService) {}
@@ -40,3 +53,4 @@ export class PersonController {
     return this.personService.remove(+id);
   }
 }
+*/

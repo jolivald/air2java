@@ -1,5 +1,10 @@
 # ECF 2 & 3 "air2java"
 
+## Notes
+
+La documentation de l'API est réalisée par swagger disponible à l'adresse:  
+[https://127.0.0.1:3000/api](https://127.0.0.1:3000/api)  
+
 
 ## Back
 

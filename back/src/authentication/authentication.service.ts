@@ -42,7 +42,7 @@ export class AuthenticationService {
   public async getAuthenticatedUser(name: string, plainTextPassword: string) {
     try {
       const user = await this.appuserService.getByName(name);
-      await this.verifyPassword(plainTextPassword, user.passwordAppuser);
+      await this.verifyPassword(plainTextPassword, user.password/*Appuser*/);
       return user;
     } catch (error) {
       throw new HttpException(
@@ -69,11 +69,10 @@ export class AuthenticationService {
   }
 
   public getAuthenticatedToken({
-    idAppuser: id,
-    typeAppuser: type,
-    nameAppuser: name,
+    /*idAppuser:*/ id,
+    /*typeAppuser:*/ type,
+    /*nameAppuser:*/ name,
   }: Appuser): string {
     return this.jwtService.sign({ id, type, name });
-    //return `Authentication=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get('JWT_TTL')}`;
   }
 }

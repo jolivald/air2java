@@ -23,31 +23,31 @@ import { Specialisation } from 'src/specialisation/entities/specialisation.entit
 @Entity('person', { schema: 'air2java' })
 export class Person {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_person' })
-  idPerson: number;
+  id: number;
 
   @Column('varchar', { name: 'firstname_person', length: 150 })
-  firstnamePerson: string;
+  firstname: string;
 
   @Column('varchar', { name: 'lastname_person', length: 150 })
-  lastnamePerson: string;
+  lastname: string;
 
   @Column('varchar', { name: 'civil_status_person', length: 50 })
-  civilStatusPerson: string;
+  civilStatus: string;
 
   @Column('varchar', { name: 'address_1_person', length: 250 })
-  address_1Person: string;
+  address_1: string;
 
   @Column('varchar', { name: 'address_2_person', nullable: true, length: 250 })
-  address_2Person: string | null;
+  address_2: string | null;
 
   @Column('varchar', { name: 'phone_person', length: 20 })
-  phonePerson: string;
+  phone: string;
 
   @Column('varchar', { name: 'email_person', length: 250 })
-  emailPerson: string;
+  email: string;
 
   @Column('date', { name: 'birthdate_person', nullable: true })
-  birthdatePerson: string | null;
+  birthdate: string | null;
 
   @Column('int', { name: 'id_responsability_person', nullable: true })
   idResponsabilityPerson: number | null;
@@ -61,21 +61,21 @@ export class Person {
   @Column('int', { name: 'id_town' })
   idTown: number;
 
-  @OneToMany(() => Band, (band) => band.idPerson2)
+  @OneToMany(() => Band, (band) => band.id)
   bands: Band[];
 
-  @OneToMany(() => Festival, (festival) => festival.idPerson2)
+  @OneToMany(() => Festival, (festival) => festival.person)
   festivals: Festival[];
 
-  @OneToMany(() => Musician, (musician) => musician.idPerson2)
+  @OneToMany(() => Musician, (musician) => musician.person)
   musicians: Musician[];
 
   @OneToOne(() => Appuser, (appuser) => appuser.person, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_appuser', referencedColumnName: 'idAppuser' }])
-  idAppuser2: Appuser;
+  @JoinColumn([{ name: 'id_appuser', referencedColumnName: 'id' }])
+  appuser: Appuser;
 
   @ManyToOne(
     () => ResponsabilityPerson,
@@ -85,25 +85,25 @@ export class Person {
   @JoinColumn([
     {
       name: 'id_responsability_person',
-      referencedColumnName: 'idResponsabilityPerson',
+      referencedColumnName: 'id',
     },
   ])
-  idResponsabilityPerson2: ResponsabilityPerson;
+  responsabilityPerson: ResponsabilityPerson;
 
   @ManyToOne(() => Band, (band) => band.people, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_band', referencedColumnName: 'idBand' }])
-  idBand2: Band;
+  @JoinColumn([{ name: 'id_band', referencedColumnName: 'id' }])
+  band: Band;
 
   @ManyToOne(() => Town, (town) => town.people, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
   @JoinColumn([{ name: 'id_town', referencedColumnName: 'idTown' }])
-  idTown2: Town;
+  town: Town;
 
-  @OneToMany(() => Specialisation, (specialisation) => specialisation.idPerson2)
+  @OneToMany(() => Specialisation, (specialisation) => specialisation.person)
   specialisations: Specialisation[];
 }

@@ -4,17 +4,17 @@ import { Person } from 'src/person/entities/person.entity';
 @Entity('appuser', { schema: 'air2java' })
 export class Appuser {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_appuser' })
-  idAppuser: number;
+  id: number;
 
   @Column('varchar', { name: 'name_appuser', length: 150, unique: true })
-  nameAppuser: string;
+  name: string;
 
   @Column('varchar', { name: 'password_appuser', length: 250 })
-  passwordAppuser: string;
+  password: string;
 
   @Column('varchar', { name: 'type_appuser', length: 150 })
-  typeAppuser: string;
+  type: string;
 
-  @OneToOne(() => Person, (person) => person.idAppuser2)
+  @OneToOne(() => Person, (person) => person.id)
   person: Person;
 }

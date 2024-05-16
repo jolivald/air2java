@@ -38,6 +38,6 @@ export class Specialisation {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_person', referencedColumnName: 'idPerson' }])
-  idPerson2: Person;
+  @JoinColumn([{ name: 'id_person', referencedColumnName: 'id' }])
+  person: Person;
 }

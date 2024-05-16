@@ -65,15 +65,15 @@ export class Performance {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_fest', referencedColumnName: 'idFest' }])
+  @JoinColumn([{ name: 'id_fest', referencedColumnName: 'id' }])
   idFest2: Festival;
 
   @ManyToOne(() => Band, (band) => band.performances, {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_band', referencedColumnName: 'idBand' }])
-  idBand2: Band;
+  @JoinColumn([{ name: 'id_band', referencedColumnName: 'id' }])
+  band: Band;
 
   @ManyToMany(() => Track, (track) => track.performances)
   tracks: Track[];
