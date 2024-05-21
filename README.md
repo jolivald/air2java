@@ -2,8 +2,16 @@
 
 ## Notes
 
+Pour lancer le backend entrer dans le dossier `back` et lancer la commande: `docker compose up`.  
+Le backend est accessible à l'adresse:  
+[https://127.0.0.1:3000](https://127.0.0.1:3000)  
+
 La documentation de l'API est réalisée par swagger disponible à l'adresse:  
 [https://127.0.0.1:3000/api](https://127.0.0.1:3000/api)  
+
+Pour lancer le frontend entrer dans le dossier `front` et lancer la commande: `npm run dev`.  
+Le frontend est accessible à l'adresse:  
+[https://127.0.0.1:5173](https://127.0.0.1:5173)  
 
 
 ## Back
