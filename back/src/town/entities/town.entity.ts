@@ -7,9 +7,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Festival } from 'src/festival/entities/festival.entity';
-import { Person } from 'src/person/entities/person.entity';
-import { Region } from 'src/region/entities/region.entity';
+import { Festival } from '../../festival/entities/festival.entity';
+import { Person } from '../../person/entities/person.entity';
+import { Region } from '../../region/entities/region.entity';
 
 @Index('id_region', ['idRegion'], {})
 @Entity('town', { schema: 'air2java' })

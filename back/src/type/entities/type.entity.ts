@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Track } from 'src/track/entities/track.entity';
+import { Track } from '../../track/entities/track.entity';
 
 @Entity('type', { schema: 'air2java' })
 export class Type {

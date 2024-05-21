@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Region } from 'src/region/entities/region.entity';
+import { Region } from '../../region/entities/region.entity';
 
 @Entity('state', { schema: 'air2java' })
 export class State {

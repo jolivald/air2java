@@ -7,9 +7,9 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Instrument } from 'src/instrument/entities/instrument.entity';
-import { Person } from 'src/person/entities/person.entity';
-import { Performance } from 'src/performance/entities/performance.entity';
+import { Instrument } from '../../instrument/entities/instrument.entity';
+import { Person } from '../../person/entities/person.entity';
+import { Performance } from '../../performance/entities/performance.entity';
 
 @Index('id_inst', ['idInst'], {})
 @Index('id_person', ['idPerson'], {})

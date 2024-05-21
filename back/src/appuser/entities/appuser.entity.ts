@@ -1,5 +1,5 @@
 import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { Person } from 'src/person/entities/person.entity';
+import { Person } from '../../person/entities/person.entity';
 
 @Entity('appuser', { schema: 'air2java' })
 export class Appuser {

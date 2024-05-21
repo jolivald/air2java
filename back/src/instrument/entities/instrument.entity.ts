@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Musician } from 'src/musician/entities/musician.entity';
+import { Musician } from '../../musician/entities/musician.entity';
 
 @Entity('instrument', { schema: 'air2java' })
 export class Instrument {

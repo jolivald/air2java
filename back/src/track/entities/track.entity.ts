@@ -8,9 +8,9 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Band } from 'src/band/entities/band.entity';
-import { Performance } from 'src/performance/entities/performance.entity';
-import { Type } from 'src/type/entities/type.entity';
+import { Band } from '../../band/entities/band.entity';
+import { Performance } from '../../performance/entities/performance.entity';
+import { Type } from '../../type/entities/type.entity';
 
 @Index('id_type', ['idType'], {})
 @Entity('track', { schema: 'air2java' })

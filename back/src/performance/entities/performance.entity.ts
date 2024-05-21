@@ -8,11 +8,11 @@ import {
   ManyToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Specialisation } from 'src/specialisation/entities/specialisation.entity';
-import { Musician } from 'src/musician/entities/musician.entity';
-import { Festival } from 'src/festival/entities/festival.entity';
-import { Band } from 'src/band/entities/band.entity';
-import { Track } from 'src/track/entities/track.entity';
+import { Specialisation } from '../../specialisation/entities/specialisation.entity';
+import { Musician } from '../../musician/entities/musician.entity';
+import { Festival } from '../../festival/entities/festival.entity';
+import { Band } from '../../band/entities/band.entity';
+import { Track } from '../../track/entities/track.entity';
 
 @Index('id_fest', ['idFest'], {})
 @Index('id_band', ['idBand'], {})
