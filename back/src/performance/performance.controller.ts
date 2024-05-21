@@ -10,7 +10,19 @@ import {
 import { PerformanceService } from './performance.service';
 import { CreatePerformanceDto } from './dto/create-performance.dto';
 import { UpdatePerformanceDto } from './dto/update-performance.dto';
+import { Crud, CrudController } from '@dataui/crud';
+import { Performance } from './entities/performance.entity';
 
+@Crud({
+  model: {
+    type: Performance,
+  },
+})
+@Controller('performance')
+export class PerformanceController implements CrudController<Performance> {
+  constructor(public service: PerformanceService) {}
+}
+/*
 @Controller('performance')
 export class PerformanceController {
   constructor(private readonly performanceService: PerformanceService) {}
@@ -43,3 +55,4 @@ export class PerformanceController {
     return this.performanceService.remove(+id);
   }
 }
+*/

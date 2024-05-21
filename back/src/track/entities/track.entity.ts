@@ -16,19 +16,19 @@ import { Type } from 'src/type/entities/type.entity';
 @Entity('track', { schema: 'air2java' })
 export class Track {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_track' })
-  idTrack: number;
+  id: number;
 
   @Column('varchar', { name: 'name_track', length: 250 })
-  nameTrack: string;
+  name: string;
 
   @Column('date', { name: 'year_track' })
-  yearTrack: string;
+  year: string;
 
   @Column('varchar', { name: 'author_name_track', length: 250 })
-  authorNameTrack: string;
+  authorName: string;
 
   @Column('int', { name: 'duration_track' })
-  durationTrack: number;
+  duration: number;
 
   @Column('int', { name: 'id_type' })
   idType: number;
@@ -39,8 +39,8 @@ export class Track {
   @ManyToMany(() => Performance, (performance) => performance.tracks)
   @JoinTable({
     name: 'setlist',
-    joinColumns: [{ name: 'id_track', referencedColumnName: 'idTrack' }],
-    inverseJoinColumns: [{ name: 'id_perf', referencedColumnName: 'idPerf' }],
+    joinColumns: [{ name: 'id_track', referencedColumnName: 'id' }],
+    inverseJoinColumns: [{ name: 'id_perf', referencedColumnName: 'id' }],
     schema: 'air2java',
   })
   performances: Performance[];
@@ -49,6 +49,6 @@ export class Track {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_type', referencedColumnName: 'idType' }])
-  idType2: Type;
+  @JoinColumn([{ name: 'id_type', referencedColumnName: 'id' }])
+  type: Type;
 }

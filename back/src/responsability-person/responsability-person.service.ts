@@ -10,9 +10,9 @@ import { Repository } from 'typeorm';
 export class ResponsabilityPersonService extends TypeOrmCrudService<ResponsabilityPerson>  {
   constructor(
     @InjectRepository(ResponsabilityPerson)
-    private festivalRepository: Repository<ResponsabilityPerson>,
+    private responsabilityPersonRepository: Repository<ResponsabilityPerson>,
   ) {
-    super(festivalRepository);
+    super(responsabilityPersonRepository);
   }
   /*
   create(createResponsabilityPersonDto: CreateResponsabilityPersonDto) {

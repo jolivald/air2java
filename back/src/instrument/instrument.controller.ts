@@ -8,9 +8,21 @@ import {
   Delete,
 } from '@nestjs/common';
 import { InstrumentService } from './instrument.service';
-import { CreateInstrumentDto } from './dto/create-instrument.dto';
-import { UpdateInstrumentDto } from './dto/update-instrument.dto';
+// import { CreateInstrumentDto } from './dto/create-instrument.dto';
+// import { UpdateInstrumentDto } from './dto/update-instrument.dto';
+import { Instrument } from './entities/instrument.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: Instrument,
+  },
+})
+@Controller('instrument')
+export class InstrumentController implements CrudController<Instrument> {
+  constructor(public service: InstrumentService) {}
+}
+/*
 @Controller('instrument')
 export class InstrumentController {
   constructor(private readonly instrumentService: InstrumentService) {}
@@ -43,3 +55,4 @@ export class InstrumentController {
     return this.instrumentService.remove(+id);
   }
 }
+*/

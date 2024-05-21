@@ -10,7 +10,19 @@ import {
 import { TypeService } from './type.service';
 import { CreateTypeDto } from './dto/create-type.dto';
 import { UpdateTypeDto } from './dto/update-type.dto';
+import { Crud, CrudController } from '@dataui/crud';
+import { Type } from './entities/type.entity';
 
+@Crud({
+  model: {
+    type: Type,
+  },
+})
+@Controller('type')
+export class TypeController implements CrudController<Type> {
+  constructor(public service: TypeService) {}
+}
+/*
 @Controller('type')
 export class TypeController {
   constructor(private readonly typeService: TypeService) {}
@@ -40,3 +52,4 @@ export class TypeController {
     return this.typeService.remove(+id);
   }
 }
+*/

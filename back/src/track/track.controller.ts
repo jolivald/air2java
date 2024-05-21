@@ -8,9 +8,21 @@ import {
   Delete,
 } from '@nestjs/common';
 import { TrackService } from './track.service';
-import { CreateTrackDto } from './dto/create-track.dto';
-import { UpdateTrackDto } from './dto/update-track.dto';
+// import { CreateTrackDto } from './dto/create-track.dto';
+// import { UpdateTrackDto } from './dto/update-track.dto';
+import { Crud, CrudController } from '@dataui/crud';
+import { Track } from './entities/track.entity';
 
+@Crud({
+  model: {
+    type: Track,
+  },
+})
+@Controller('track')
+export class TrackController implements CrudController<Track> {
+  constructor(public service: TrackService) {}
+}
+/*
 @Controller('track')
 export class TrackController {
   constructor(private readonly trackService: TrackService) {}
@@ -40,3 +52,4 @@ export class TrackController {
     return this.trackService.remove(+id);
   }
 }
+*/

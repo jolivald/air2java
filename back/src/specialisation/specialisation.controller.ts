@@ -8,9 +8,21 @@ import {
   Delete,
 } from '@nestjs/common';
 import { SpecialisationService } from './specialisation.service';
-import { CreateSpecialisationDto } from './dto/create-specialisation.dto';
-import { UpdateSpecialisationDto } from './dto/update-specialisation.dto';
+// import { CreateSpecialisationDto } from './dto/create-specialisation.dto';
+// import { UpdateSpecialisationDto } from './dto/update-specialisation.dto';
+import { Specialisation } from './entities/specialisation.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: Specialisation,
+  },
+})
+@Controller('specialisation')
+export class SpecialisationController implements CrudController<Specialisation> {
+  constructor(public service: SpecialisationService) {}
+}
+/*
 @Controller('specialisation')
 export class SpecialisationController {
   constructor(private readonly specialisationService: SpecialisationService) {}
@@ -43,3 +55,4 @@ export class SpecialisationController {
     return this.specialisationService.remove(+id);
   }
 }
+*/

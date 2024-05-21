@@ -16,7 +16,7 @@ import { Person } from 'src/person/entities/person.entity';
 @Entity('specialisation', { schema: 'air2java' })
 export class Specialisation {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_specialisation' })
-  idSpecialisation: number;
+  id: number;
 
   @Column('int', { name: 'id_spec', nullable: true })
   idSpec: number | null;
@@ -31,8 +31,8 @@ export class Specialisation {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_spec', referencedColumnName: 'idSpec' }])
-  idSpec2: Specialty;
+  @JoinColumn([{ name: 'id_spec', referencedColumnName: 'id' }])
+  specialty: Specialty;
 
   @ManyToOne(() => Person, (person) => person.specialisations, {
     onDelete: 'RESTRICT',

@@ -50,6 +50,6 @@ export class Festival {
   @JoinColumn([{ name: 'id_town', referencedColumnName: 'id' }])
   town: Town;
 
-  @OneToMany(() => Performance, (performance) => performance.idFest2)
+  @OneToMany(() => Performance, (performance) => performance.festival)
   performances: Performance[];
 }

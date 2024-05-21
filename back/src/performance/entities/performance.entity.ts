@@ -19,16 +19,16 @@ import { Track } from 'src/track/entities/track.entity';
 @Entity('performance', { schema: 'air2java' })
 export class Performance {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_perf' })
-  idPerf: number;
+  id: number;
 
   @Column('date', { name: 'date_perf' })
-  datePerf: string;
+  date: string;
 
   @Column('time', { name: 'start_time_perf' })
-  startTimePerf: string;
+  startTime: string;
 
   @Column('time', { name: 'end_time_perf' })
-  endTimePerf: string;
+  endTime: string;
 
   @Column('int', { name: 'id_fest' })
   idFest: number;
@@ -42,9 +42,9 @@ export class Performance {
   )
   @JoinTable({
     name: 'participate',
-    joinColumns: [{ name: 'id_perf', referencedColumnName: 'idPerf' }],
+    joinColumns: [{ name: 'id_perf', referencedColumnName: 'id' }],
     inverseJoinColumns: [
-      { name: 'id_specialisation', referencedColumnName: 'idSpecialisation' },
+      { name: 'id_specialisation', referencedColumnName: 'id' },
     ],
     schema: 'air2java',
   })
@@ -53,9 +53,9 @@ export class Performance {
   @ManyToMany(() => Musician, (musician) => musician.performances)
   @JoinTable({
     name: 'perform',
-    joinColumns: [{ name: 'id_perf', referencedColumnName: 'idPerf' }],
+    joinColumns: [{ name: 'id_perf', referencedColumnName: 'id' }],
     inverseJoinColumns: [
-      { name: 'id_musician', referencedColumnName: 'idMusician' },
+      { name: 'id_musician', referencedColumnName: 'id' },
     ],
     schema: 'air2java',
   })
@@ -66,7 +66,7 @@ export class Performance {
     onUpdate: 'RESTRICT',
   })
   @JoinColumn([{ name: 'id_fest', referencedColumnName: 'id' }])
-  idFest2: Festival;
+  festival: Festival;
 
   @ManyToOne(() => Band, (band) => band.performances, {
     onDelete: 'RESTRICT',

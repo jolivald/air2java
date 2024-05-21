@@ -42,7 +42,7 @@ export class Band {
   @JoinTable({
     name: 'repertory',
     joinColumns: [{ name: 'id_band', referencedColumnName: 'id' }],
-    inverseJoinColumns: [{ name: 'id_track', referencedColumnName: 'idTrack' }],
+    inverseJoinColumns: [{ name: 'id_track', referencedColumnName: 'id' }],
     schema: 'air2java',
   })
   tracks: Track[];

@@ -1,7 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateSpecialisationDto } from './dto/create-specialisation.dto';
 import { UpdateSpecialisationDto } from './dto/update-specialisation.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Specialisation } from './entities/specialisation.entity';
 
+@Injectable()
+export class SpecialisationService extends TypeOrmCrudService<Specialisation>  {
+  constructor(
+    @InjectRepository(Specialisation)
+    private specialisationRepository: Repository<Specialisation>,
+  ) {
+    super(specialisationRepository);
+  }
+}
+/*
 @Injectable()
 export class SpecialisationService {
   create(createSpecialisationDto: CreateSpecialisationDto) {
@@ -24,3 +38,4 @@ export class SpecialisationService {
     return `This action removes a #${id} specialisation`;
   }
 }
+*/

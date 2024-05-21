@@ -4,11 +4,11 @@ import { Track } from 'src/track/entities/track.entity';
 @Entity('type', { schema: 'air2java' })
 export class Type {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_type' })
-  idType: number;
+  id: number;
 
   @Column('varchar', { name: 'name_type', length: 150 })
-  nameType: string;
+  name: string;
 
-  @OneToMany(() => Track, (track) => track.idType2)
+  @OneToMany(() => Track, (track) => track.type)
   tracks: Track[];
 }
