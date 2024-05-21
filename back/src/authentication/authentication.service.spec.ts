@@ -2,8 +2,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthenticationService } from './authentication.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { DatabaseModule } from '../database/database.module';
 import { Appuser } from '../appuser/entities/appuser.entity';
+import { AppuserService } from '../appuser/appuser.service';
+import { AppuserModule } from '../appuser/appuser.module';
+import { InjectRepository, TypeOrmModule, getRepositoryToken } from '@nestjs/typeorm';
+import { DatabaseModule } from '../database/database.module';
 
 describe('AuthenticationService', () => {
   let authenticationService: AuthenticationService;
@@ -11,8 +14,9 @@ describe('AuthenticationService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
+        //AppuserModule,
         ConfigModule.forRoot(),
-        DatabaseModule,
+        // DatabaseModule,
         JwtModule.registerAsync({
           imports: [ConfigModule],
           inject: [ConfigService],
@@ -24,8 +28,17 @@ describe('AuthenticationService', () => {
             },
           }),
         }),
+        DatabaseModule,
+        TypeOrmModule.forFeature([Appuser]),
       ],
-      providers: [AuthenticationService],
+      providers: [
+        AppuserService,
+        AuthenticationService,
+        /*{
+          provide: getRepositoryToken(Appuser),
+          useValue: {}
+        }*/
+      ],
     }).compile();
 
     authenticationService = await module.get<AuthenticationService>(AuthenticationService);
@@ -41,11 +54,23 @@ describe('AuthenticationService', () => {
       expect(authenticatedUser).toBeInstanceOf(Appuser);
     });
   });
-  /*
-  * register
-  * getAuthenticatedUser
-  * verifyPassword
-  * getAuthenticatedToken
-  */
+
+  describe('when creating a user\'s access token', () => {
+    let authenticatedUser: Appuser;
+    let accessToken: string;
+    beforeEach(async () => {
+      authenticatedUser = await authenticationService.getAuthenticatedUser('root', '12345678');
+      accessToken = authenticationService.getAuthenticatedToken(authenticatedUser);
+    });
+    it('should return a string', () => {
+      expect(typeof accessToken).toBe('string');
+    });
+    it('should return a token of the correct length', () => {
+      expect(accessToken.length).toBe(176);
+    });
+    it('should return a well formed token', () => {
+      expect(accessToken.split('.').map(str => str.length)).toEqual([36, 95, 43]);
+    });
+  });
 
 });
