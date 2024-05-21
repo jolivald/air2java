@@ -4,11 +4,11 @@ import { Region } from 'src/region/entities/region.entity';
 @Entity('state', { schema: 'air2java' })
 export class State {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_state' })
-  idState: number;
+  id: number;
 
   @Column('varchar', { name: 'name_state', length: 150 })
-  nameState: string;
+  name: string;
 
-  @OneToMany(() => Region, (region) => region.idState2)
+  @OneToMany(() => Region, (region) => region.idState)
   regions: Region[];
 }

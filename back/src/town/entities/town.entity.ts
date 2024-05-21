@@ -15,16 +15,16 @@ import { Region } from 'src/region/entities/region.entity';
 @Entity('town', { schema: 'air2java' })
 export class Town {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_town' })
-  idTown: number;
+  id: number;
 
   @Column('varchar', { name: 'postal_code_town', length: 10 })
-  postalCodeTown: string;
+  postalCode: string;
 
   @Column('int', { name: 'id_region' })
   idRegion: number;
 
   @Column('varchar', { name: 'name_town', length: 150 })
-  nameTown: string;
+  name: string;
 
   @OneToMany(() => Festival, (festival) => festival.town)
   festivals: Festival[];
@@ -36,6 +36,6 @@ export class Town {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_region', referencedColumnName: 'idRegion' }])
-  idRegion2: Region;
+  @JoinColumn([{ name: 'id_region', referencedColumnName: 'id' }])
+  region: Region;
 }

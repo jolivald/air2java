@@ -1,7 +1,22 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTrackDto } from './dto/create-track.dto';
-import { UpdateTrackDto } from './dto/update-track.dto';
+// import { CreateTrackDto } from './dto/create-track.dto';
+// import { UpdateTrackDto } from './dto/update-track.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { Track } from './entities/track.entity';
+import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 
+
+@Injectable()
+export class TrackService extends TypeOrmCrudService<Track>  {
+  constructor(
+    @InjectRepository(Track)
+    private trackRepository: Repository<Track>,
+  ) {
+    super(trackRepository);
+  }
+}
+/*
 @Injectable()
 export class TrackService {
   create(createTrackDto: CreateTrackDto) {
@@ -24,3 +39,4 @@ export class TrackService {
     return `This action removes a #${id} track`;
   }
 }
+*/

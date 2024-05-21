@@ -7,7 +7,7 @@ export class ResponsabilityPerson {
   id: number;
 
   @Column('varchar', { name: 'name_responsability_person', length: 150 })
-  nameResponsabilityPerson: string;
+  nameResponsability: string;
 
   @OneToMany(() => Person, (person) => person.responsabilityPerson)
   people: Person[];

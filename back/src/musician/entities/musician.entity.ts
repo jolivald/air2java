@@ -16,7 +16,7 @@ import { Performance } from 'src/performance/entities/performance.entity';
 @Entity('musician', { schema: 'air2java' })
 export class Musician {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_musician' })
-  idMusician: number;
+  id: number;
 
   @Column('int', { name: 'id_inst', nullable: true })
   idInst: number | null;
@@ -28,8 +28,8 @@ export class Musician {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_inst', referencedColumnName: 'idInst' }])
-  idInst2: Instrument;
+  @JoinColumn([{ name: 'id_inst', referencedColumnName: 'id' }])
+  instrument: Instrument;
 
   @ManyToOne(() => Person, (person) => person.musicians, {
     onDelete: 'RESTRICT',

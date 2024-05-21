@@ -8,9 +8,21 @@ import {
   Delete,
 } from '@nestjs/common';
 import { MusicianService } from './musician.service';
-import { CreateMusicianDto } from './dto/create-musician.dto';
-import { UpdateMusicianDto } from './dto/update-musician.dto';
+// import { CreateMusicianDto } from './dto/create-musician.dto';
+// import { UpdateMusicianDto } from './dto/update-musician.dto';
+import { Musician } from './entities/musician.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: Musician,
+  },
+})
+@Controller('musician')
+export class MusicianController implements CrudController<Musician> {
+  constructor(public service: MusicianService) {}
+}
+/*
 @Controller('musician')
 export class MusicianController {
   constructor(private readonly musicianService: MusicianService) {}
@@ -43,3 +55,4 @@ export class MusicianController {
     return this.musicianService.remove(+id);
   }
 }
+*/

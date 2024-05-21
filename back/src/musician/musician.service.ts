@@ -1,7 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateMusicianDto } from './dto/create-musician.dto';
 import { UpdateMusicianDto } from './dto/update-musician.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { Musician } from './entities/musician.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
+@Injectable()
+export class MusicianService extends TypeOrmCrudService<Musician>  {
+  constructor(
+    @InjectRepository(Musician)
+    private musicianRepository: Repository<Musician>,
+  ) {
+    super(musicianRepository);
+  }
+}
+/*
 @Injectable()
 export class MusicianService {
   create(createMusicianDto: CreateMusicianDto) {
@@ -24,3 +38,4 @@ export class MusicianService {
     return `This action removes a #${id} musician`;
   }
 }
+*/

@@ -1,9 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { CreateStateDto } from './dto/create-state.dto';
 import { UpdateStateDto } from './dto/update-state.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { State } from './entities/state.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
-export class StateService {
+export class StateService extends TypeOrmCrudService<State> {
+  constructor(
+    @InjectRepository(State)
+    private stateRepository: Repository<State>,
+  ) {
+    super(stateRepository);
+  }
+
+  /*
   create(createStateDto: CreateStateDto) {
     return 'This action adds a new state';
   }
@@ -23,4 +35,5 @@ export class StateService {
   remove(id: number) {
     return `This action removes a #${id} state`;
   }
+  */
 }

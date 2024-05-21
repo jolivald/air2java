@@ -1,9 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRegionDto } from './dto/create-region.dto';
 import { UpdateRegionDto } from './dto/update-region.dto';
+import { TypeOrmCrudService } from '@dataui/crud-typeorm';
+import { Region } from './entities/region.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
-export class RegionService {
+export class RegionService extends TypeOrmCrudService<Region> {
+  constructor(
+    @InjectRepository(Region)
+    private regionRepository: Repository<Region>,
+  ) {
+    super(regionRepository);
+  }
+  /*
   create(createRegionDto: CreateRegionDto) {
     return 'This action adds a new region';
   }
@@ -23,4 +34,5 @@ export class RegionService {
   remove(id: number) {
     return `This action removes a #${id} region`;
   }
+  */
 }

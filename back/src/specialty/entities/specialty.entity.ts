@@ -4,11 +4,11 @@ import { Specialisation } from 'src/specialisation/entities/specialisation.entit
 @Entity('specialty', { schema: 'air2java' })
 export class Specialty {
   @PrimaryGeneratedColumn({ type: 'int', name: 'id_spec' })
-  idSpec: number;
+  id: number;
 
   @Column('varchar', { name: 'name_spec', length: 150 })
-  nameSpec: string;
+  name: string;
 
-  @OneToMany(() => Specialisation, (specialisation) => specialisation.idSpec2)
+  @OneToMany(() => Specialisation, (specialisation) => specialisation.specialty)
   specialisations: Specialisation[];
 }
