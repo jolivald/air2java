@@ -17,6 +17,7 @@ import FestivalIcon from '@mui/icons-material/Festival';
 import GroupIcon from '@mui/icons-material/Group';
 import PersonIcon from '@mui/icons-material/Person';
 import WorkIcon from '@mui/icons-material/Work';
+import FlagIcon from '@mui/icons-material/Flag';
 
 
 import { UserList } from "./components/UserList";
@@ -29,6 +30,12 @@ import { BandEdit } from "./components/BandEdit";
 import { PersonEdit } from "./components/PersonEdit";
 import { ResponsabilityList } from "./components/ResponsabilityList";
 import { ResponsabilityEdit } from "./components/ResponsabilityEdit";
+import { StateList } from "./components/StateList";
+import { StateEdit } from "./components/StateEdit";
+import { RegionEdit } from "./components/RegionEdit";
+import { RegionList } from "./components/RegionList";
+import { TownList } from "./components/TownList";
+import { TownEdit } from "./components/TownEdit";
 
 export const i18nProvider = polyglotI18nProvider(() => fr, 'fr'); 
 
@@ -67,6 +74,24 @@ export const App = () => (
       icon={WorkIcon}
       list={ResponsabilityList}
       edit={ResponsabilityEdit}
+    />
+    <Resource
+      name="state"
+      icon={FlagIcon}
+      list={StateList}
+      edit={StateEdit}
+    />
+    <Resource
+      name="region"
+      icon={FlagIcon}
+      list={RegionList}
+      edit={RegionEdit}
+    />
+    <Resource
+      name="town"
+      icon={FlagIcon}
+      list={TownList}
+      edit={TownEdit}
     />
   </Admin>
 );

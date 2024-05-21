@@ -10,7 +10,19 @@ import {
 import { RegionService } from './region.service';
 import { CreateRegionDto } from './dto/create-region.dto';
 import { UpdateRegionDto } from './dto/update-region.dto';
+import { Region } from './entities/region.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: Region,
+  },
+})
+@Controller('region')
+export class RegionController implements CrudController<Region> {
+  constructor(public service: RegionService) {}
+}
+/*
 @Controller('region')
 export class RegionController {
   constructor(private readonly regionService: RegionService) {}
@@ -40,3 +52,4 @@ export class RegionController {
     return this.regionService.remove(+id);
   }
 }
+*/

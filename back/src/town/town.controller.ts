@@ -10,7 +10,19 @@ import {
 import { TownService } from './town.service';
 import { CreateTownDto } from './dto/create-town.dto';
 import { UpdateTownDto } from './dto/update-town.dto';
+import { Town } from './entities/town.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+@Crud({
+  model: {
+    type: Town,
+  },
+})
+@Controller('town')
+export class TownController implements CrudController<Town> {
+  constructor(public service: TownService) {}
+}
+/*
 @Controller('town')
 export class TownController {
   constructor(private readonly townService: TownService) {}
@@ -40,3 +52,4 @@ export class TownController {
     return this.townService.remove(+id);
   }
 }
+*/

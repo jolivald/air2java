@@ -8,9 +8,23 @@ import {
   Delete,
 } from '@nestjs/common';
 import { StateService } from './state.service';
-import { CreateStateDto } from './dto/create-state.dto';
-import { UpdateStateDto } from './dto/update-state.dto';
+// import { CreateStateDto } from './dto/create-state.dto';
+// import { UpdateStateDto } from './dto/update-state.dto';
+import { State } from './entities/state.entity';
+import { Crud, CrudController } from '@dataui/crud';
 
+
+@Crud({
+  model: {
+    type: State,
+  },
+})
+@Controller('state')
+export class StateController implements CrudController<State> {
+  constructor(public service: StateService) {}
+}
+
+/*
 @Controller('state')
 export class StateController {
   constructor(private readonly stateService: StateService) {}
@@ -40,3 +54,4 @@ export class StateController {
     return this.stateService.remove(+id);
   }
 }
+*/

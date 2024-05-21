@@ -47,7 +47,7 @@ export class Festival {
     onDelete: 'RESTRICT',
     onUpdate: 'RESTRICT',
   })
-  @JoinColumn([{ name: 'id_town', referencedColumnName: 'idTown' }])
+  @JoinColumn([{ name: 'id_town', referencedColumnName: 'id' }])
   town: Town;
 
   @OneToMany(() => Performance, (performance) => performance.idFest2)
