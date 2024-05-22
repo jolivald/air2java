@@ -16,6 +16,11 @@ jobs:
     defaults:
       run:
         working-directory: back
+    env:
+      DB_PASS: ${{ secrets.DB_PASS }}
+      DB_NAME: ${{ secrets.DB_NAME }}
+      DB_PORT: ${{ secrets.DB_PORT }}
+      APP_PORT: ${{ secrets.APP_PORT }}
 
     steps:
     - name: Checkout code
