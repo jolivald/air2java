@@ -33,7 +33,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install docker-compose -y
 
     - name: Build and start services
-      run: docker-compose up -d --build
+      run: docker-compose up -d --build -f ./back/docker-compose.yml
 
     - name: Wait for db to be healthy
       run: |
@@ -43,7 +43,7 @@ jobs:
     - name: Run unit tests
       run: docker-compose exec app npm run test
 
-    - name: Run end to endunit tests
+    - name: Run end to end tests
       run: docker-compose exec app npm run test:e2e
 
     - name: Shut down services
