@@ -13,6 +13,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: back
 
     steps:
     - name: Checkout code
@@ -33,7 +36,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install docker-compose -y
 
     - name: Build and start services
-      run: docker-compose up -d --build -f ./back/docker-compose.yml
+      run: docker-compose up -d --build
 
     - name: Wait for db to be healthy
       run: |
