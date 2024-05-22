@@ -5,7 +5,6 @@ services:
     image: mariadb
     restart: always
     container_name: a2j_database
-    env_file: ./.env
     environment:
       MARIADB_ROOT_PASSWORD: $DB_PASS
       MARIADB_DATABASE: $DB_NAME
@@ -19,9 +18,16 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: a2j_backend
-    env_file: ./.env
     environment:
-      - PORT=$APP_PORT
+      - APP_HOST=$APP_HOST
+      - APP_PORT=$APP_PORT
+      - DB_HOST=$DB_HOST
+      - DB_PORT=$DB_PORT
+      - DB_NAME=$DB_NAME
+      - DB_USER=$DB_USER
+      - DB_PASS=$DB_PASS
+      - JWT_SECRET=$JWT_SECRET
+      - JWT_TTL=$JWT_TTL
     ports:
       - $APP_PORT:$APP_PORT
       - 9229:9229
