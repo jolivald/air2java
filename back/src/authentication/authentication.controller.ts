@@ -13,7 +13,7 @@ import { AuthenticationService } from './authentication.service';
 import { RegisterAppuserDto } from './dto/register-appuser.dto';
 import { RequestWithUser } from './requestWithUser.interface';
 import { LocalAuthenticationGuard } from './localAuthentication.guard';
-import { PasswordInterceptor } from 'src/transform/password.interceptor';
+import { PasswordInterceptor } from '../transform/password.interceptor';
 import { Response } from 'express';
 //import { AppuserService } from 'src/appuser/appuser.service';
 import JwtAuthenticationGuard from './jwtAuthentication.guard';

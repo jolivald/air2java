@@ -1,5 +1,5 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
-import { Specialisation } from 'src/specialisation/entities/specialisation.entity';
+import { Specialisation } from '../../specialisation/entities/specialisation.entity';
 
 @Entity('specialty', { schema: 'air2java' })
 export class Specialty {

@@ -1,20 +1,32 @@
 # ECF 2 & 3 "air2java"
 
-## Notes
+### Installation
 
-Pour lancer le backend entrer dans le dossier `back` et lancer la commande: `docker compose up`.  
+Pour lancer le backend entrer dans le dossier __back__ et lancer la commande: `docker compose up`.  
 Le backend est accessible à l'adresse:  
 [https://127.0.0.1:3000](https://127.0.0.1:3000)  
 
 La documentation de l'API est réalisée par swagger disponible à l'adresse:  
 [https://127.0.0.1:3000/api](https://127.0.0.1:3000/api)  
 
-Pour lancer le frontend entrer dans le dossier `front` et lancer la commande: `npm run dev`.  
+Pour lancer le frontend entrer dans le dossier __front__ et lancer la commande: `npm run dev`.  
 Le frontend est accessible à l'adresse:  
 [https://127.0.0.1:5173](https://127.0.0.1:5173)  
 
 
-## Back
+### Tests
+
+Pour lancer les tests du backend entrer dans l'environnement docker avec la commande:  
+`docker exec -it a2j_backend bash`  
+
+Ensuite utiliser les commandes:
+ - `npm run test` pour les tests unitaires
+ - `npm run test:e2e` pour les tests de bouts en bouts
+
+
+## Cahier des charges
+
+### Back
 
 Vous réaliserez le back-end sous forme d'API en JS. (avec express) Les infos de connexions à la base seront
 dans un fichier de variables d'environnement
@@ -23,7 +35,7 @@ l'api sera sécurisé par l'utilisation d'un token pour les écritures. Vous ré
 différents pour chaque route principale (groupe, musicien, login, etc...)
 
 
-## Front
+### Front
 
 Vous réaliserez le front en react. Sans ou avec framework
 Cette application est destinée à un public restreint et qui connaît bien le principe d'organisation de festival.
@@ -52,11 +64,11 @@ L'accent sera mis sur l'utilisabilité. L'équipe préfère une app un peu moche
 vous réaliserez des tests sur les composants principaux des "pages" groupes et Connexion
 
 
-## CI/CD
+### CI/CD
 Vous utiliserez Git idéalement avec les Vous ferez des commits réguliers. Vous ferez en sorte que vos tests
 s'exécutent à chaque push du code sur github.
 
-## Généralités
+### Généralités
 Le code produit devra respecter certaines normes :
  * Tous les noms d'objets devront respecter le domaine métier. (Festival sera une festival, pas un
 évènement ou autres).  
@@ -76,7 +88,7 @@ durée de l'ECF.
 scripts YAML.
 
 
-## Délais, règles, etc...
+### Délais, règles, etc...
 Vous aurez jusqu'au __17 mai__ (dernier délai) pour réaliser cet ECF Si je n'ai pas de soucis à ce que vous
 échangiez, __cet ECF est personnel__. J'attends donc un rendu par personne. Avant le 17 mai donc, vous
 m'ajouterez à vos projets.

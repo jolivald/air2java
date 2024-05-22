@@ -8,13 +8,13 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Band } from 'src/band/entities/band.entity';
-import { Festival } from 'src/festival/entities/festival.entity';
-import { Musician } from 'src/musician/entities/musician.entity';
-import { Appuser } from 'src/appuser/entities/appuser.entity';
-import { ResponsabilityPerson } from 'src/responsability-person/entities/responsability-person.entity';
-import { Town } from 'src/town/entities/town.entity';
-import { Specialisation } from 'src/specialisation/entities/specialisation.entity';
+import { Band } from '../../band/entities/band.entity';
+import { Festival } from '../../festival/entities/festival.entity';
+import { Musician } from '../../musician/entities/musician.entity';
+import { Appuser } from '../../appuser/entities/appuser.entity';
+import { ResponsabilityPerson } from '../../responsability-person/entities/responsability-person.entity';
+import { Town } from '../../town/entities/town.entity';
+import { Specialisation } from '../../specialisation/entities/specialisation.entity';
 
 @Index('id_appuser', ['idAppuser'], { unique: true })
 @Index('id_responsability_person', ['idResponsabilityPerson'], {})

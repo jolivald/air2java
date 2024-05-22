@@ -7,9 +7,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Person } from 'src/person/entities/person.entity';
-import { Town } from 'src/town/entities/town.entity';
-import { Performance } from 'src/performance/entities/performance.entity';
+import { Person } from '../../person/entities/person.entity';
+import { Town } from '../../town/entities/town.entity';
+import { Performance } from '../../performance/entities/performance.entity';
 
 @Index('id_person', ['idPerson'], {})
 @Index('id_town', ['idTown'], {})

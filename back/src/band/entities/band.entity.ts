@@ -9,9 +9,9 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { Person } from 'src/person/entities/person.entity';
-import { Performance } from 'src/performance/entities/performance.entity';
-import { Track } from 'src/track/entities/track.entity';
+import { Person } from '../../person/entities/person.entity';
+import { Performance } from '../../performance/entities/performance.entity';
+import { Track } from '../../track/entities/track.entity';
 
 @Index('person_represent_band', ['idPerson'], {})
 @Entity('band', { schema: 'air2java' })

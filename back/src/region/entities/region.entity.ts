@@ -7,8 +7,8 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { State } from 'src/state/entities/state.entity';
-import { Town } from 'src/town/entities/town.entity';
+import { State } from '../../state/entities/state.entity';
+import { Town } from '../../town/entities/town.entity';
 
 @Index('id_state', ['idState'], {})
 @Entity('region', { schema: 'air2java' })

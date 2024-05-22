@@ -2,7 +2,7 @@ import { Controller, UseInterceptors } from "@nestjs/common";
 import { Crud, CrudController } from "@dataui/crud";
 import { Appuser } from "./entities/appuser.entity";
 import { AppuserService } from "./appuser.service";
-import { PasswordInterceptor } from 'src/transform/password.interceptor';
+import { PasswordInterceptor } from '../transform/password.interceptor';
 
 @Crud({
   model: {
