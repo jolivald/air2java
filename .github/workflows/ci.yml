@@ -55,10 +55,10 @@ jobs:
         # docker-compose exec db bash -c 'while ! mysqladmin ping --silent; do sleep 1; done'
 
     - name: Run unit tests
-      run: docker-compose exec app npm run test
+      run: docker-compose exec -d app npm run test
 
     - name: Run end to end tests
-      run: docker-compose exec app npm run test:e2e
+      run: docker-compose exec -d app npm run test:e2e
 
     - name: Shut down services
       run: docker-compose down --volumes --remove-orphans
