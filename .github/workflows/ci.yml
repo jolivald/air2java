@@ -18,7 +18,7 @@ jobs:
         working-directory: back
     env:
       APP_HOST: ${{ secrets.APP_HOST }}
-      APP_PORT: ${{ secrets.APP_HOST }}
+      APP_PORT: ${{ secrets.APP_PORT }}
       DB_HOST: ${{ secrets.DB_HOST }}
       DB_NAME: ${{ secrets.DB_NAME }}
       DB_PASS: ${{ secrets.DB_PASS }}
