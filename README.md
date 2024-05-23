@@ -1,5 +1,6 @@
 # ECF 2 & 3 "air2java"
 
+
 ### Installation
 
 Pour lancer le backend entrer dans le dossier __back__ et lancer la commande: `docker compose up`.  
@@ -23,6 +24,29 @@ Ensuite utiliser les commandes:
  - `npm run test` pour les tests unitaires
  - `npm run test:e2e` pour les tests de bouts en bouts
 
+
+### CI/CD
+
+Le dépôt est configuré à l'aide du fichier [ci.yml](.github/workflows/ci.yml) pour lancer le pipeline CI/CD lors d'un push ou d'un merge sur la branche main.  
+
+Liste des étapes:
+ 1. Récupération du code
+ 2. Installation de docker
+ 3. Mise en place du cache docker
+ 4. Installation de docker-compose
+ 5. Construction et démarrage des services
+ 6. Attente de l'initialisation de la base de données
+ 7. Lancement des tests unitaires
+ 8. Lancement des tests de bout en bout
+ 9. Arrêt et nettoyage des services
+ 10. Affichage des journaux en cas d'erreur
+
+
+### Maquette
+
+![Maquette](mockup.jpg)
+
+---
 
 ## Cahier des charges
 
